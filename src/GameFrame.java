@@ -5,9 +5,14 @@ import java.awt.*;
  * Created by Ryan on 4/6/2015.
  */
 public class GameFrame extends JFrame {
-
+    
     private JPanel buttonPanel;
     private JButton stepButton;
+    private JButton playButton;
+    private JButton resetButton;
+    
+    private JMenuBar menuBar;
+    
     private static GameFrame gameFrameInstance;
 
     private GameFrame(String name) {
@@ -21,11 +26,26 @@ public class GameFrame extends JFrame {
         getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 
         stepButton = new JButton("Step");
+        playButton = new JButton("Play");
+        resetButton = new JButton("Reset");
+        
         buttonPanel.add(stepButton);
-
-
-
-
+        buttonPanel.add(playButton);
+        buttonPanel.add(resetButton);
+        
+        menuBar = new JMenuBar();
+        
+        JMenu fileMenu = new JMenu("File");
+        JMenu viewMenu = new JMenu("View"); 
+        JMenu helpMenu = new JMenu("Help");
+        
+        helpMenu.add(new JMenuItem("Sorry, this is life, you get no help!"));
+        
+        menuBar.add(fileMenu);
+        menuBar.add(viewMenu);
+        menuBar.add(helpMenu);
+        
+        setJMenuBar(menuBar);
     }
 
     public static GameFrame getInstance(String name) {
