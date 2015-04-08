@@ -11,6 +11,8 @@ public class GameFrame extends JFrame {
     private JButton playButton;
     private JButton resetButton;
     
+    private JMenuBar menuBar;
+    
    // private JPanel gridPanel;
     
     private static GameFrame gameFrameInstance;
@@ -32,6 +34,9 @@ public class GameFrame extends JFrame {
         buttonPanel.add(stepButton);
         buttonPanel.add(playButton);
         buttonPanel.add(resetButton);
+        
+        menuBar = new JMenuBar();
+        setJMenuBar(menuBar);
         
        // gridPanel = new JPanel();
        // getContentPane().add(gridPanel, BorderLayout.CENTER);
