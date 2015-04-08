@@ -5,11 +5,14 @@ import java.awt.*;
  * Created by Ryan on 4/6/2015.
  */
 public class GameFrame extends JFrame {
-
+    
     private JPanel buttonPanel;
     private JButton stepButton;
     private JButton playButton;
     private JButton resetButton;
+    
+   // private JPanel gridPanel;
+    
     private static GameFrame gameFrameInstance;
 
     private GameFrame(String name) {
@@ -29,6 +32,9 @@ public class GameFrame extends JFrame {
         buttonPanel.add(stepButton);
         buttonPanel.add(playButton);
         buttonPanel.add(resetButton);
+        
+       // gridPanel = new JPanel();
+       // getContentPane().add(gridPanel, BorderLayout.CENTER);
     }
 
     public static GameFrame getInstance(String name) {
