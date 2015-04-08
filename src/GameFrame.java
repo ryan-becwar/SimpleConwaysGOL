@@ -8,6 +8,8 @@ public class GameFrame extends JFrame {
 
     private JPanel buttonPanel;
     private JButton stepButton;
+    private JButton playButton;
+    private JButton resetButton;
     private static GameFrame gameFrameInstance;
 
     private GameFrame(String name) {
@@ -21,11 +23,12 @@ public class GameFrame extends JFrame {
         getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 
         stepButton = new JButton("Step");
+        playButton = new JButton("Play");
+        resetButton = new JButton("Reset");
+        
         buttonPanel.add(stepButton);
-
-
-
-
+        buttonPanel.add(playButton);
+        buttonPanel.add(resetButton);
     }
 
     public static GameFrame getInstance(String name) {
