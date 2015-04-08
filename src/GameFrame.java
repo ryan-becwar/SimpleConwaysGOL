@@ -13,8 +13,6 @@ public class GameFrame extends JFrame {
     
     private JMenuBar menuBar;
     
-   // private JPanel gridPanel;
-    
     private static GameFrame gameFrameInstance;
 
     private GameFrame(String name) {
@@ -36,10 +34,18 @@ public class GameFrame extends JFrame {
         buttonPanel.add(resetButton);
         
         menuBar = new JMenuBar();
-        setJMenuBar(menuBar);
         
-       // gridPanel = new JPanel();
-       // getContentPane().add(gridPanel, BorderLayout.CENTER);
+        JMenu fileMenu = new JMenu("File");
+        JMenu viewMenu = new JMenu("View"); 
+        JMenu helpMenu = new JMenu("Help");
+        
+        helpMenu.add(new JMenuItem("Sorry, this is life, you get no help!"));
+        
+        menuBar.add(fileMenu);
+        menuBar.add(viewMenu);
+        menuBar.add(helpMenu);
+        
+        setJMenuBar(menuBar);
     }
 
     public static GameFrame getInstance(String name) {
