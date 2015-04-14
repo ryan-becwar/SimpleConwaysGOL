@@ -28,6 +28,11 @@ public class GameFrame extends JFrame {
         add(buttonPanel);
         getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 
+        buttonSetUp();
+        menuSetUp();
+    }
+    
+    public void buttonSetUp() {
         stepButton = new JButton("Step");
         playButton = new JButton("Play");
         resetButton = new JButton("Reset");
@@ -35,7 +40,9 @@ public class GameFrame extends JFrame {
         buttonPanel.add(stepButton);
         buttonPanel.add(playButton);
         buttonPanel.add(resetButton);
-
+    }
+    
+    public void menuSetUp() {
         gridPanel = new GridPanel(30, 20, 20);
         getContentPane().add(gridPanel, BorderLayout.NORTH);
         
