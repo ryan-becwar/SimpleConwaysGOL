@@ -62,6 +62,7 @@ public class GameFrame extends JFrame {
             		
             		while(isPlaying) {
             			gridPanel.stepOneGeneration();
+            			repaint();
             		}
             	}
             	else {
