@@ -46,6 +46,7 @@ public class GameFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
             	gridPanel.stepOneGeneration();
             	//fire changes
+            	repaint();
             }
         });  
          
@@ -79,6 +80,7 @@ public class GameFrame extends JFrame {
         		gridPanel = new GridPanel(30, 20, 20);
                 getContentPane().add(gridPanel, BorderLayout.NORTH);
         		//fire changes
+                repaint();
         	}
         });
     }
