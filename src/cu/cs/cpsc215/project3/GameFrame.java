@@ -32,6 +32,9 @@ public class GameFrame extends JFrame {
         add(buttonPanel);
         getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 
+        gridPanel = new GridPanel(30, 20, 20);
+        getContentPane().add(gridPanel, BorderLayout.NORTH);
+
         buttonSetUp();
         menuSetUp();
     }
@@ -87,9 +90,6 @@ public class GameFrame extends JFrame {
     }
     
     public void menuSetUp() {
-        gridPanel = new GridPanel(30, 20, 20);
-        getContentPane().add(gridPanel, BorderLayout.NORTH);
-        
         menuBar = new JMenuBar();
         
         JMenu fileMenu = new JMenu("File");

@@ -13,6 +13,8 @@ import java.util.ArrayList;
 public class GridPanel extends JPanel {
 
     private GridBagConstraints gbConst;
+    private int width;
+    private int height;
 
     private CellPanel[][] cells;
     //serializing the GridPanel object should be more effective and efficient than
@@ -46,6 +48,11 @@ public class GridPanel extends JPanel {
     }
 
     public void stepOneGeneration(){
+        for(int r=0; r<this.height; r++){
+            for(int c=0; c<this.width; c++) {
+//                cells[c][r]
+            }
+        }
 
     }
 
