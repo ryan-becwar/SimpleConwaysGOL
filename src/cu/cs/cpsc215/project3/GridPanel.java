@@ -1,6 +1,5 @@
 package cu.cs.cpsc215.project3;
 
-import javafx.scene.control.Cell;
 
 import javax.swing.*;
 import java.awt.*;

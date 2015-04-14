@@ -36,7 +36,7 @@ public class GameFrame extends JFrame {
         buttonPanel.add(playButton);
         buttonPanel.add(resetButton);
 
-        gridPanel = new GridPanel(600, 400, 20);
+        gridPanel = new GridPanel(30, 20, 20);
         getContentPane().add(gridPanel, BorderLayout.NORTH);
         
         menuBar = new JMenuBar();
