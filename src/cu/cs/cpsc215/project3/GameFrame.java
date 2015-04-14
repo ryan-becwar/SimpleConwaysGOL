@@ -56,20 +56,6 @@ public class GameFrame extends JFrame {
         playButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	
-            	if(!isPlaying) {
-            		playButton.setText("Pause");
-            		isPlaying = true;
-            		
-            		while(isPlaying) {
-            			gridPanel.stepOneGeneration();
-            			repaint();
-            		}
-            	}
-            	else {
-            		playButton.setText("Play");
-            		isPlaying = false;
-            	}
-            	repaint();
             }
         });
         
