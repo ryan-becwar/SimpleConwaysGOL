@@ -2,6 +2,8 @@ package cu.cs.cpsc215.project3;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 /**
  * Created by Ryan on 4/6/2015.
@@ -12,6 +14,8 @@ public class GameFrame extends JFrame {
     private JButton stepButton;
     private JButton playButton;
     private JButton resetButton;
+    
+    private boolean isPlaying = false;
     
     private JMenuBar menuBar;
 
@@ -33,13 +37,50 @@ public class GameFrame extends JFrame {
     }
     
     public void buttonSetUp() {
+    	
         stepButton = new JButton("Step");
-        playButton = new JButton("Play");
-        resetButton = new JButton("Reset");
-        
         buttonPanel.add(stepButton);
+
+        
+        stepButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	gridPanel.stepOneGeneration();
+            	//fire changes
+            }
+        });  
+         
+        playButton = new JButton("Play");
         buttonPanel.add(playButton);
+        
+        playButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	
+            	if(!isPlaying) {
+            		playButton.setText("Pause");
+            		isPlaying = true;
+            		
+            		while(isPlaying) {
+            			gridPanel.stepOneGeneration();
+            		}
+            	}
+            	else {
+            		playButton.setText("Play");
+            		isPlaying = false;
+            	}
+            	repaint();
+            }
+        });
+        
+        resetButton = new JButton("Reset");
         buttonPanel.add(resetButton);
+        
+        resetButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		gridPanel = new GridPanel(30, 20, 20);
+                getContentPane().add(gridPanel, BorderLayout.NORTH);
+        		//fire changes
+        	}
+        });
     }
     
     public void menuSetUp() {

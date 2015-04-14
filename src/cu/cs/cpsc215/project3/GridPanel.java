@@ -17,7 +17,7 @@ public class GridPanel extends JPanel {
     private CellPanel[][] cells;
     //serializing the GridPanel object should be more effective and efficient than
     //maintaining and serializing a gameState object
-//    private GameState gameState;
+    // private GameState gameState;
 
     public GridPanel(int width, int height, int cellPixWidth) {
         this.setLayout(new GridBagLayout());
