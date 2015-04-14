@@ -9,4 +9,8 @@ public class CellPanel extends JPanel {
     private Boolean curState;
     private Boolean updatedState;
 
+    public CellPanel(){
+        curState = false;
+        updatedState = false;
+    }
 }
