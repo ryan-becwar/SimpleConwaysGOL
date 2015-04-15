@@ -126,9 +126,17 @@ public class GridPanel extends JPanel {
     	
     	for(int r =0; r <  height; r++) {
     		for(int c = 0; c < width; c++) {
-    			if(toChange[c][r]) cells[c][r].updateColor();
+    			if(toChange[c][r]) cells[c][r].updateState();
     		}
     	}
     }
+
+	public void updateColorChange() {
+		for(int r=0; r <height; r++){
+			for(int c=0; c<width; c++){
+				cells[c][r].updateColor();
+			}
+		}
+	}
 
 }

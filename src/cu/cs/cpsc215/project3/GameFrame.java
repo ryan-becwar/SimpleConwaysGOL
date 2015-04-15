@@ -34,7 +34,7 @@ public class GameFrame extends JFrame {
     private GameFrame(String name) {
         super(name);
 
-        setSize(1200, 800);
+        setSize(1800, 1000);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
         buttonPanel = new JPanel();
@@ -98,6 +98,7 @@ public class GameFrame extends JFrame {
         colorButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		CellPanel.changeColorScheme();
+                gridPanel.updateColorChange();
         	}
         });
     }
@@ -106,7 +107,7 @@ public class GameFrame extends JFrame {
      * 
      */
     public void menuSetUp() {
-        gridPanel = new GridPanel(95, 50, 2);
+        gridPanel = new GridPanel(135, 70, 2);
         getContentPane().add(gridPanel, BorderLayout.NORTH);
         
         menuBar = new JMenuBar();

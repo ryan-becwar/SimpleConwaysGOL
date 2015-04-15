@@ -26,7 +26,7 @@ public class CellPanel extends JPanel {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                updateColor();
+                updateState();
             }
 
             @Override
@@ -57,20 +57,28 @@ public class CellPanel extends JPanel {
     /**
      * Updates color appropriately. 
      */
-    public void updateColor() {
+    public void updateState() {
         if(!isAlive){
-            currentColor = currentScheme.getLiveColor();
             isAlive = true;
             wasAlive = true;
         } 
         else {
         	isAlive = false;
-        	if(wasAlive) {
-        		currentColor = currentSceheme.getDeadColor();
-        	}
-        	else {
-        		currentColor = Color.WHITE;
-        	}
+        }
+        updateColor();
+    }
+
+    public void updateColor(){
+        if(isAlive){
+            currentColor = currentScheme.getLiveColor();
+        }
+        else {
+            if(wasAlive) {
+                currentColor = currentScheme.getDeadColor();
+            }
+            else {
+                currentColor = Color.WHITE;
+            }
         }
         setBackground(currentColor);
         this.repaint();
