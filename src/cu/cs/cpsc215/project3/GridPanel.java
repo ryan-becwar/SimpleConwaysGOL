@@ -4,12 +4,14 @@ package cu.cs.cpsc215.project3;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
+
 import java.awt.*;
+import java.io.Serializable;
 
 /**
  * Created by Ryan on 4/8/2015.
  */
-public class GridPanel extends JPanel {
+public class GridPanel extends JPanel implements Serializable {
 
     /**
 	 * 
@@ -19,7 +21,6 @@ public class GridPanel extends JPanel {
 	private int height;
 
 	private GridBagConstraints gbConst;
-
     private CellPanel[][] cells;
     
     //serializing the GridPanel object should be more effective and efficient than

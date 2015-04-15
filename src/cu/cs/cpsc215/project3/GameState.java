@@ -10,4 +10,12 @@ public class GameState {
     public GameState() {
 
     }
+
+	public CellPanel[][] getCells() {
+		return cells;
+	}
+
+	public void setCells(CellPanel[][] cells) {
+		this.cells = cells;
+	}
 }
