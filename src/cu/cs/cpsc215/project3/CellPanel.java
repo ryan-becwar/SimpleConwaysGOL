@@ -13,6 +13,7 @@ public class CellPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private boolean isAlive;
     private boolean wasAlive;
+    private static ColorScheme currentScheme = ColorScheme.getNextScheme();
     
     private Color currentColor;
 
@@ -30,7 +31,7 @@ public class CellPanel extends JPanel {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                setBackground(Color.BLUE);
+                setBackground(currentScheme.getLiveColor());
                 repaint();
             }
 
@@ -58,14 +59,14 @@ public class CellPanel extends JPanel {
      */
     public void updateColor() {
         if(!isAlive){
-            currentColor = Color.BLUE;
+            currentColor = currentScheme.getLiveColor();
             isAlive = true;
             wasAlive = true;
         } 
         else {
         	isAlive = false;
         	if(wasAlive) {
-        		currentColor = new Color(200, 200, 200);
+        		currentColor = currentSceheme.getDeadColor();
         	}
         	else {
         		currentColor = Color.WHITE;
@@ -82,4 +83,11 @@ public class CellPanel extends JPanel {
     public boolean getState(){
         return isAlive;
     }
+    
+    /**
+     * Changes to next scheme.
+     */
+	public static void changeColorScheme() {
+		currentScheme = ColorScheme.getNextScheme();
+	}
 }

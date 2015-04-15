@@ -18,6 +18,7 @@ public class GameFrame extends JFrame {
     private JButton stepButton;
     private JButton playButton;
     private JButton resetButton;
+    private JButton colorButton;
     
     private boolean isPlaying = false;
     
@@ -85,8 +86,18 @@ public class GameFrame extends JFrame {
         
         resetButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		System.out.println("Reset Pressed!");
         		gridPanel.reset();
+        		gridPanel.reset();
+        	}
+        });
+        
+        //Implement COLOR Button
+        colorButton = new JButton("Change Color Scheme");
+        buttonPanel.add(colorButton);
+        
+        colorButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		CellPanel.changeColorScheme();
         	}
         });
     }
