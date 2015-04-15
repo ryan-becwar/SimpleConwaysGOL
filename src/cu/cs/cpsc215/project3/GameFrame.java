@@ -111,7 +111,6 @@ public class GameFrame extends JFrame {
      * Implements menu and adds functionality to tabs.
      */
     public void menuSetUp() {
-
     	gridPanel = new GridPanel(135, 70, 2);
     	getContentPane().add(gridPanel, BorderLayout.NORTH);
     	
@@ -119,15 +118,26 @@ public class GameFrame extends JFrame {
     	
     	JMenu fileMenu = new JMenu("File");
     	JMenu helpMenu = new JMenu("Help");
-    	
+    	JMenu subDesignMenu = new JMenu("Sub-Designs");
+
     	JMenuItem open = new JMenuItem("Open");
     	JMenuItem saveAs = new JMenuItem("Save As");
     	
     	helpMenu.add(new JMenuItem("Sorry, this is life, you get no help!"));
     	fileMenu.add(open);
     	fileMenu.add(saveAs);
-    	
-    	open.addActionListener(new ActionListener() {
+
+
+        final GliderDesign gliderItem = new GliderDesign();
+        subDesignMenu.add(gliderItem);
+
+        gliderItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                insertSubDesign(gliderItem);
+            }
+        });
+
+        open.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				loadGridPanel();
@@ -151,7 +161,15 @@ public class GameFrame extends JFrame {
     	//JMenu viewMenu = new JMenu("View"); 
     	//viewMenu.add(new JMenuItem("More to come"));
     }
-    
+
+    /**
+     * Insers
+     * @param design
+     */
+    private void insertSubDesign(SubDesign design){
+        int xCoord = Integer.parseInt(JOptionPane.showInputDialog("Enter the x coordinate to insert at:"));
+        int yCoord = Integer.parseInt(JOptionPane.showInputDialog("Enter the y coordinate to insert at:"));
+    }
     /**
      * Saves grid panel
      */
