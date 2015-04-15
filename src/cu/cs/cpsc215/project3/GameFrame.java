@@ -67,7 +67,15 @@ public class GameFrame extends JFrame {
         
         playButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	
+            	if(!isPlaying) {
+            		isPlaying = true;
+            		playButton.setText("Pause");
+            	}
+            	else {
+            		isPlaying = false;
+            		playButton.setText("Play");
+            	}
+            	buttonPanel.repaint();
             }
         });
         
@@ -119,21 +127,4 @@ public class GameFrame extends JFrame {
            gameFrameInstance = new GameFrame(name);
         return gameFrameInstance;
     }
-
-    /**
-     * 
-     * @return
-     */
-	public boolean isPlaying() {
-		return isPlaying;
-	}
-
-	/**
-	 * 
-	 * @param isPlaying
-	 */
-	public void setPlaying(boolean isPlaying) {
-		this.isPlaying = isPlaying;
-	}
-
 }
