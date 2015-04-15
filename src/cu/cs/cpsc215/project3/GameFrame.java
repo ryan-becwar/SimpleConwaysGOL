@@ -127,12 +127,20 @@ public class GameFrame extends JFrame {
     	fileMenu.add(open);
     	fileMenu.add(saveAs);
 
-        final SubDesign gliderItem = new GliderDesign();
+        final SubDesign gliderItem = new GliderDesign("Glider");
+        final SubDesign gliderGunItem = new GliderGunDesign("Glider Gun");
         subDesignMenu.add(gliderItem);
+        subDesignMenu.add(gliderGunItem);
 
         gliderItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 insertSubDesign(gliderItem);
+            }
+        });
+
+        gliderGunItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                insertSubDesign(gliderGunItem);
             }
         });
 

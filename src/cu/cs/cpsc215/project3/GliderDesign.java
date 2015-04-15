@@ -5,11 +5,11 @@ package cu.cs.cpsc215.project3;
  */
 public class GliderDesign extends SubDesign {
 
-    public GliderDesign(){
-        super("Glider");
+    public GliderDesign(String name){
+        super(name);
         height = 3;
         width = 3;
-        design = new boolean[][]{{false, true, true},
+        design = new boolean[][]{{false, true, false},
                                  {false, false, true},
                                  {true, true, true}};
     }
