@@ -132,6 +132,27 @@ public class GridPanel extends JPanel implements Serializable {
     	}
     }
 
+	/**
+	 * Inserts the specified subdesign at the given coordinates, with the top left corner of the subdesign
+	 * starting at the given coordinate
+	 * @param xCoord
+	 * @param yCoord
+	 * @param width
+	 * @param height
+	 * @param design
+	 */
+	public void insertSubDesign(int xCoord, int yCoord, int width, int height, boolean[][] design){
+			for( int r = yCoord; r < yCoord + height; r++){
+				for(int c = xCoord; c < xCoord + width; c++){
+					if(r < this.height) {
+						if(c < this.width) {
+							cells[c][r].setState(design[r - yCoord][c - xCoord]);
+						}
+					}
+				}
+			}
+	}
+
 	public void updateColorChange() {
 		for(int r=0; r <height; r++){
 			for(int c=0; c<width; c++){

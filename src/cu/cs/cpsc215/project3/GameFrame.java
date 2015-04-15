@@ -127,8 +127,7 @@ public class GameFrame extends JFrame {
     	fileMenu.add(open);
     	fileMenu.add(saveAs);
 
-
-        final GliderDesign gliderItem = new GliderDesign();
+        final SubDesign gliderItem = new GliderDesign();
         subDesignMenu.add(gliderItem);
 
         gliderItem.addActionListener(new ActionListener() {
@@ -154,6 +153,7 @@ public class GameFrame extends JFrame {
     	
     	menuBar.add(fileMenu);
     	menuBar.add(helpMenu);
+        menuBar.add(subDesignMenu);
     	
     	setJMenuBar(menuBar);
     	
@@ -169,6 +169,7 @@ public class GameFrame extends JFrame {
     private void insertSubDesign(SubDesign design){
         int xCoord = Integer.parseInt(JOptionPane.showInputDialog("Enter the x coordinate to insert at:"));
         int yCoord = Integer.parseInt(JOptionPane.showInputDialog("Enter the y coordinate to insert at:"));
+        gridPanel.insertSubDesign(xCoord, yCoord, design.getWidth(), design.getHeight(), design.getDesign());
     }
     /**
      * Saves grid panel
