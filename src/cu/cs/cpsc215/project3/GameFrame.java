@@ -10,7 +10,11 @@ import java.awt.event.ActionEvent;
  */
 public class GameFrame extends JFrame {
     
-    private JPanel buttonPanel;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel buttonPanel;
     private JButton stepButton;
     private JButton playButton;
     private JButton resetButton;
@@ -22,37 +26,42 @@ public class GameFrame extends JFrame {
     private GridPanel gridPanel;
     private static GameFrame gameFrameInstance;
 
+    /**
+     * 
+     * @param name
+     */
     private GameFrame(String name) {
         super(name);
 
-        setSize(800, 400);
+        setSize(1200, 800);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
         buttonPanel = new JPanel();
         add(buttonPanel);
         getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 
-        gridPanel = new GridPanel(30, 20, 20);
-        getContentPane().add(gridPanel, BorderLayout.NORTH);
-
         buttonSetUp();
         menuSetUp();
     }
     
+    /**
+     * Implements and adds all buttons to button panel.
+     */
     public void buttonSetUp() {
     	
+    	//Implement STEP Button
         stepButton = new JButton("Step");
         buttonPanel.add(stepButton);
 
         
         stepButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+            	System.out.println("Step pressed!");
             	gridPanel.stepOneGeneration();
-            	//fire changes
-            	repaint();
             }
         });  
          
+        //Implement PLAY Button
         playButton = new JButton("Play");
         buttonPanel.add(playButton);
         
@@ -62,20 +71,25 @@ public class GameFrame extends JFrame {
             }
         });
         
+        //Implement RESET Button
         resetButton = new JButton("Reset");
         buttonPanel.add(resetButton);
         
         resetButton.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		gridPanel = new GridPanel(30, 20, 20);
-                getContentPane().add(gridPanel, BorderLayout.NORTH);
-        		//fire changes
-                repaint();
+        		System.out.println("Reset Pressed!");
+        		gridPanel.reset();
         	}
         });
     }
     
+    /**
+     * 
+     */
     public void menuSetUp() {
+        gridPanel = new GridPanel(95, 50, 2);
+        getContentPane().add(gridPanel, BorderLayout.NORTH);
+        
         menuBar = new JMenuBar();
         
         JMenu fileMenu = new JMenu("File");
@@ -94,11 +108,32 @@ public class GameFrame extends JFrame {
         setJMenuBar(menuBar);
     }
 
-    //made a singleton to ensure only one instance of the gameframe is running.
+    /**
+     * made a singleton to ensure only one instance of the gameframe is running.
+     * 
+     * @param name
+     * @return
+     */
     public static GameFrame getInstance(String name) {
         if(gameFrameInstance == null)
            gameFrameInstance = new GameFrame(name);
         return gameFrameInstance;
     }
+
+    /**
+     * 
+     * @return
+     */
+	public boolean isPlaying() {
+		return isPlaying;
+	}
+
+	/**
+	 * 
+	 * @param isPlaying
+	 */
+	public void setPlaying(boolean isPlaying) {
+		this.isPlaying = isPlaying;
+	}
 
 }

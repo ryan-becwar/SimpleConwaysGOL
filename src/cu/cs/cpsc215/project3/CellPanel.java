@@ -9,21 +9,22 @@ import java.awt.event.MouseEvent;
  * Created by Ryan on 4/8/2015.
  */
 public class CellPanel extends JPanel {
-    private Boolean curState;
-    private Boolean updatedState;
+
+	private static final long serialVersionUID = 1L;
+	private boolean isAlive;
+    private boolean wasAlive;
+    
     private Color currentColor;
 
     public CellPanel(){
-        curState = false;
-        updatedState = false;
         currentColor = Color.WHITE;
         setBackground(currentColor);
+        isAlive = false;
+        wasAlive = false;
 
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                curState = !curState;
-                updatedState = curState;
                 updateColor();
             }
 
@@ -39,29 +40,46 @@ public class CellPanel extends JPanel {
                 repaint();
             }
         });
-
+    }
+    
+    /**
+     * Implemented by Grace. 
+     * Resets the cell's information as if it were brand new.
+     */
+    public void clear() {
+    	currentColor = Color.WHITE;
+    	setBackground(currentColor);
+    	isAlive = false;
+    	wasAlive = false;
     }
 
-
-    private void updateColor() {
-        if(curState){
-            currentColor = Color.WHITE;
-            setBackground(currentColor);
-        } else {
-            currentColor = Color.BLACK;
+    /**
+     * Updates color appropriately. 
+     */
+    public void updateColor() {
+        if(!isAlive){
+            currentColor = Color.BLUE;
+            isAlive = true;
+            wasAlive = true;
+        } 
+        else {
+        	isAlive = false;
+        	if(wasAlive) {
+        		currentColor = new Color(200, 200, 200);
+        	}
+        	else {
+        		currentColor = Color.WHITE;
+        	}
         }
+        setBackground(currentColor);
         this.repaint();
     }
 
-    public void stepGeneration(){
-        curState = updatedState;
-    }
-
-    public void updateState(boolean newState){
-        updatedState = newState;
-    }
-
+    /**
+     * Returns if the cell is alive or not
+     * @return isAlive
+     */
     public boolean getState(){
-        return curState;
+        return isAlive;
     }
 }
