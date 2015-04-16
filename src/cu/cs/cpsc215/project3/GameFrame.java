@@ -201,7 +201,7 @@ public class GameFrame extends JFrame {
      */
     private void saveGridPanel() {
     	String fileName = (String)JOptionPane.showInputDialog("Enter name of file to save it.");
-    	String filePathway = "/tmp/" + fileName + ".ser";
+    	String filePathway = fileName + ".ser";
     	
         try
         {
@@ -223,7 +223,7 @@ public class GameFrame extends JFrame {
      */
     private void loadGridPanel() {
     	String fileName = JOptionPane.showInputDialog("Enter name of file to upload it!");
-    	String filePathway = "/tmp/" + fileName + ".ser";
+    	String filePathway = fileName + ".ser";
     	try
         {
            FileInputStream fileIn = new FileInputStream(filePathway);
@@ -240,7 +240,7 @@ public class GameFrame extends JFrame {
         }
     	catch(ClassNotFoundException c)
         {
-           System.out.println("GridPanel class not found");
+           System.out.println("GameState class not found");
            c.printStackTrace();
            return;
         }
