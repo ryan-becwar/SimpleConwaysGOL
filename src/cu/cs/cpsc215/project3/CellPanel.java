@@ -97,10 +97,11 @@ public class CellPanel extends JPanel {
      * @param s
      */
     public void setState(boolean s){
-        if(s) {
-        wasAlive = true;
+        if(isAlive) {
+            wasAlive = true;
         }
         isAlive = s;
+        updateColor();
     }
     
     /**
