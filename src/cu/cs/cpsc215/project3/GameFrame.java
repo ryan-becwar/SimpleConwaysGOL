@@ -129,8 +129,12 @@ public class GameFrame extends JFrame {
 
         final SubDesign gliderItem = new GliderDesign("Glider");
         final SubDesign gliderGunItem = new GliderGunDesign("Glider Gun");
+        final SubDesign fastSpaceshipItem = new FastSpaceshipDesign("Fast Spaceship");
+        final SubDesign lwssItem = new LWSSDesign("LWSS");
         subDesignMenu.add(gliderItem);
         subDesignMenu.add(gliderGunItem);
+        subDesignMenu.add(fastSpaceshipItem);
+        subDesignMenu.add(lwssItem);
 
         gliderItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -141,6 +145,20 @@ public class GameFrame extends JFrame {
         gliderGunItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 insertSubDesign(gliderGunItem);
+            }
+        });
+
+        fastSpaceshipItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                insertSubDesign(fastSpaceshipItem);
+            }
+        });
+
+        lwssItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                insertSubDesign(lwssItem);
             }
         });
 
