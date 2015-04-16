@@ -1,11 +1,17 @@
 package cu.cs.cpsc215.project3;
 
+import java.io.Serializable;
+
 /**
  * Created by Ryan on 4/8/2015.
  */
-public class GameState {
+public class GameState implements Serializable{
 
-    private boolean[][] cells;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2410146483192973766L;
+	private boolean[][] cells;
     private int width, height;
 
     public GameState(int width, int height) {
