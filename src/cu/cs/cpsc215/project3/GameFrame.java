@@ -172,7 +172,6 @@ public class GameFrame extends JFrame {
     	saveAs.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Saving as...");
 				saveGridPanel();
 			}	
     	});
@@ -229,7 +228,7 @@ public class GameFrame extends JFrame {
         {
            FileInputStream fileIn = new FileInputStream(filePathway);
            ObjectInputStream in = new ObjectInputStream(fileIn);
-           gridPanel = (GridPanel) in.readObject();
+           gridPanel.setGameState((GameState) in.readObject());
            gridPanel.updateColorChange();
            in.close();
            fileIn.close();

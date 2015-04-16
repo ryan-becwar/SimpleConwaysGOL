@@ -5,17 +5,26 @@ package cu.cs.cpsc215.project3;
  */
 public class GameState {
 
-    private CellPanel[][] cells;
+    private boolean[][] cells;
+    private int width, height;
 
-    public GameState() {
-
+    public GameState(int width, int height) {
+    	this.width = width;
+    	this.height = height;
+    	
+    	cells = new boolean[width][height];
     }
-
-	public CellPanel[][] getCells() {
-		return cells;
-	}
-
-	public void setCells(CellPanel[][] cells) {
-		this.cells = cells;
-	}
+    
+    public boolean getCellState(int c, int r) {
+    	if(c >= 0 && c < width && r >= 0 && r < height) {
+    		return cells[c][r];
+    	}
+    	return false;
+    }
+    
+    public void setCellState(int c, int r, boolean state) {
+    	if(c >= 0 && c < width && r >= 0 && r < height) {
+    		cells[c][r] = state;
+    	}
+    }
 }

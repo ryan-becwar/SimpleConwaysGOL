@@ -19,6 +19,7 @@ public class GridPanel extends JPanel implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int width;
 	private int height;
+	private GameState gameState;
 
 	private GridBagConstraints gbConst;
     private CellPanel[][] cells;
@@ -37,6 +38,7 @@ public class GridPanel extends JPanel implements Serializable {
     	
     	this.width = width;
     	this.height = height;
+    	gameState = new GameState(width, height);
     	
         this.setLayout(new GridBagLayout());
         gbConst = new GridBagConstraints();
@@ -54,7 +56,7 @@ public class GridPanel extends JPanel implements Serializable {
 
                 //Logic to handle cell border thickness
                 Border b = null;
-                b = new MatteBorder(1, 1, 1, 1, Color.BLACK);
+                b = new MatteBorder(1, 1, 1, 1, new Color(200,200,200));
                 cells[c][r].setBorder(b);
 
                 add(cells[c][r], gbConst);
@@ -159,6 +161,10 @@ public class GridPanel extends JPanel implements Serializable {
 				cells[c][r].updateColor();
 			}
 		}
+	}
+
+	public void setGameState(GameState readObject) {
+		gameState = readObject;
 	}
 
 }
