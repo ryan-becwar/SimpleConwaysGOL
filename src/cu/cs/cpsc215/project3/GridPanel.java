@@ -65,6 +65,17 @@ public class GridPanel extends JPanel implements Serializable {
     }
     
     /**
+     * Sets cell state based off of game state.
+     */
+    public void rebuildFromGameState(){
+       	for(int r =0; r <  height; r++) {
+    		for(int c = 0; c < width; c++) {
+    			cells[c][r].setState(gameState.getCellState(c, r));
+    			} 
+    		}
+    }
+    
+    /**
      * Resets all cells as if they are new.
      */
     public void reset() {
@@ -116,12 +127,20 @@ public class GridPanel extends JPanel implements Serializable {
     				if(liveNeighbors < 2 || liveNeighbors > 3) {
     					//cell must die
     					toChange[c][r] = true;
+    					gameState.setCellState(c, r, false);
+    				}
+    				else {
+    					gameState.setCellState(c, r, true);
     				}
     			}
     			else {
     				//cell will be revived
     				if(liveNeighbors == 3) {
     					toChange[c][r] = true;
+    					gameState.setCellState(c, r, true);
+    				}
+    				else {
+    					gameState.setCellState(c, r, false);
     				}
     			} 
     		}
@@ -163,8 +182,20 @@ public class GridPanel extends JPanel implements Serializable {
 		}
 	}
 
+	/**
+	 * Sets game state
+	 * @param readObject
+	 */
 	public void setGameState(GameState readObject) {
 		gameState = readObject;
+	}
+	
+	/**
+	 * Returns game state
+	 * @return
+	 */
+	public GameState getGameState() {
+		return gameState;
 	}
 
 }

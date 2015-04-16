@@ -207,7 +207,7 @@ public class GameFrame extends JFrame {
         {
            FileOutputStream fileOut = new FileOutputStream(filePathway);
            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-           out.writeObject(gridPanel);
+           out.writeObject(gridPanel.getGameState());
            out.close();
            fileOut.close();
            System.out.printf("Serialized data is saved in " + filePathway);
