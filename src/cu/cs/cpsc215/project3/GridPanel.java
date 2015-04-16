@@ -73,6 +73,7 @@ public class GridPanel extends JPanel implements Serializable {
     			cells[c][r].setState(gameState.getCellState(c, r));
     			} 
     		}
+       	updateColorChange();
     }
     
     /**

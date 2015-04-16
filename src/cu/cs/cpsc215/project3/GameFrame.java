@@ -229,7 +229,7 @@ public class GameFrame extends JFrame {
            FileInputStream fileIn = new FileInputStream(filePathway);
            ObjectInputStream in = new ObjectInputStream(fileIn);
            gridPanel.setGameState((GameState) in.readObject());
-           gridPanel.updateColorChange();
+           gridPanel.rebuildFromGameState();
            in.close();
            fileIn.close();
         }
