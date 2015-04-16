@@ -7,9 +7,6 @@ import java.io.Serializable;
  */
 public class GameState implements Serializable{
 
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 2410146483192973766L;
 	private boolean[][] cells;
     private int width, height;
