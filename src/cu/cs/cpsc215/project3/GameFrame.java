@@ -29,6 +29,7 @@ public class GameFrame extends JFrame {
     private JButton playButton;
     private JButton resetButton;
     private JButton colorButton;
+    private JButton borderButton;
     
     private boolean isPlaying = false;
     private GridPanel gridPanel = null;
@@ -113,6 +114,16 @@ public class GameFrame extends JFrame {
         		CellPanel.changeColorScheme();
                 gridPanel.updateColorChange();
         	}
+        });
+
+        //Implement BORDER Button
+        borderButton = new JButton("Change Border");
+        buttonPanel.add(borderButton);
+        borderButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                gridPanel.updateBorder();
+            }
         });
     }
     
