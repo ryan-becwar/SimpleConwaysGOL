@@ -206,12 +206,19 @@ public class GameFrame extends JFrame {
     }
 
     /**
-     * Insers
+     * Handles the frame side of inserting a specified subdesign
      * @param design
      */
     private void insertSubDesign(SubDesign design){
-        int xCoord = Integer.parseInt(JOptionPane.showInputDialog("Enter the x coordinate to insert at:"));
-        int yCoord = Integer.parseInt(JOptionPane.showInputDialog("Enter the y coordinate to insert at:"));
+        int xCoord = 0;
+        int yCoord = 0;
+        try {
+            xCoord = Integer.parseInt(JOptionPane.showInputDialog("Enter the x coordinate to insert at:"));
+            yCoord = Integer.parseInt(JOptionPane.showInputDialog("Enter the y coordinate to insert at:"));
+        } catch (NumberFormatException e) {
+//            e.printStackTrace();
+            System.out.println("User entered something besides a bounded integer!");
+        }
         gridPanel.insertSubDesign(xCoord, yCoord, design.getWidth(), design.getHeight(), design.getDesign());
     }
     /**
@@ -219,7 +226,7 @@ public class GameFrame extends JFrame {
      */
     private void saveGridPanel() {
     	String fileName = (String)JOptionPane.showInputDialog("Enter name of file to save it.");
-    	String filePathway = System.getProperty("user.dir") + "cu/cs/cpsc215/project3/savedGameStates/" + fileName + ".ser";
+    	String filePathway = System.getProperty("user.dir") + "/src/cu/cs/cpsc215/project3/savedGameStates/" + fileName + ".ser";
     	System.out.println(filePathway);
     	
         try
@@ -242,7 +249,7 @@ public class GameFrame extends JFrame {
      */
     private void loadGridPanel() {
     	String fileName = JOptionPane.showInputDialog("Enter name of file to upload it!");
-    	String filePathway = System.getProperty("user.dir") + "cu/cs/cpsc215/project3/savedGameStates/" + fileName + ".ser";
+    	String filePathway = System.getProperty("user.dir") + "/src/cu/cs/cpsc215/project3/savedGameStates/" + fileName + ".ser";
     	try
         {
            FileInputStream fileIn = new FileInputStream(filePathway);
