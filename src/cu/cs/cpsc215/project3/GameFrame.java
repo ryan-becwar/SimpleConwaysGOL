@@ -50,7 +50,6 @@ public class GameFrame extends JFrame {
         buttonPanel = new JPanel();
         add(buttonPanel);
         getContentPane().add(buttonPanel, BorderLayout.SOUTH);
-        
 
         buttonSetUp();
         menuSetUp();
@@ -66,7 +65,6 @@ public class GameFrame extends JFrame {
         stepButton = new JButton("Step");
         buttonPanel.add(stepButton);
 
-        
         stepButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	gridPanel.stepOneGeneration();
@@ -83,7 +81,7 @@ public class GameFrame extends JFrame {
             		isPlaying = true;
             		playButton.setText("Pause");
             		runningGP = new RunningGridPanel(gridPanel);
-            		playTimer.schedule(runningGP, 0, 100);
+            		playTimer.schedule(runningGP, 0, 50);
             	}
             	else {
             		isPlaying = false;
@@ -140,6 +138,7 @@ public class GameFrame extends JFrame {
         final JMenuItem gliderGunItem = new JMenuItem("Glider Gun");
         final JMenuItem fastSpaceshipItem = new JMenuItem("Fast Spaceship");
         final JMenuItem lwssItem = new JMenuItem("LWSS");
+        
         subDesignMenu.add(gliderItem);
         subDesignMenu.add(gliderGunItem);
         subDesignMenu.add(fastSpaceshipItem);
@@ -190,10 +189,6 @@ public class GameFrame extends JFrame {
         menuBar.add(subDesignMenu);
     	
     	setJMenuBar(menuBar);
-    	
-	    //menuBar.add(viewMenu);
-    	//JMenu viewMenu = new JMenu("View"); 
-    	//viewMenu.add(new JMenuItem("More to come"));
     }
 
     /**
