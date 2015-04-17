@@ -40,6 +40,7 @@ public class CellPanel extends JPanel {
                 repaint();
             }
             
+            @Override
             public void mousePressed(MouseEvent e) {
             	updateState();
             	mouseIsDragging = true;
