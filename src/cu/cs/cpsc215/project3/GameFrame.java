@@ -125,6 +125,9 @@ public class GameFrame extends JFrame {
                 gridPanel.updateBorder();
             }
         });
+
+        JLabel genLabel = new JLabel("Woo, a piece of text!");
+        buttonPanel.add(genLabel);
     }
     
     /**

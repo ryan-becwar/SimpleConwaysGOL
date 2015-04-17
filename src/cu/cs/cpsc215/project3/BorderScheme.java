@@ -14,8 +14,10 @@ public class BorderScheme {
 
     private static BorderScheme[] bordersDesigns = new BorderScheme[]{
             new BorderScheme(1, Color.BLACK),
-            new BorderScheme(1, Color.DARK_GRAY),
-            new BorderScheme(1, Color.PINK),
+            new BorderScheme(1, Color.GRAY),
+            new BorderScheme(1, Color.MAGENTA),
+            new BorderScheme(2, Color.GRAY),
+            new BorderScheme(1, Color.WHITE),
             new BorderScheme(0, Color.WHITE)
     };
 
@@ -35,10 +37,10 @@ public class BorderScheme {
             if(yCoord < (height -1))
                 return(bordersDesigns[count % bordersDesigns.length].directionalBorders[0]);
             else
-                return(bordersDesigns[count % bordersDesigns.length].directionalBorders[1]);
+                return(bordersDesigns[count % bordersDesigns.length].directionalBorders[2]);
         } else {
             if(yCoord < (height -1))
-                return(bordersDesigns[count % bordersDesigns.length].directionalBorders[2]);
+                return(bordersDesigns[count % bordersDesigns.length].directionalBorders[1]);
             else
                 return(bordersDesigns[count % bordersDesigns.length].directionalBorders[3]);
         }

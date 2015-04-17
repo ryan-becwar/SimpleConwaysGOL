@@ -18,6 +18,7 @@ public class ColorScheme {
 	 */
 	private static ColorScheme[] mySchemes = {new ColorScheme(Color.BLUE, Color.LIGHT_GRAY),
 											  new ColorScheme(Color.ORANGE, Color.MAGENTA),
+											  new ColorScheme(new Color(82, 45, 128), new Color(234, 106, 32)),
 											  new ColorScheme(Color.RED, Color.GREEN),
 											  new ColorScheme(Color.CYAN, Color.DARK_GRAY)};
 	/**
