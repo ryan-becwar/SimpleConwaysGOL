@@ -7,19 +7,22 @@ import java.awt.event.MouseEvent;
 
 /**
  * Created by Ryan on 4/8/2015.
+ * Represents a cell in the grid panel. 
  */
 public class CellPanel extends JPanel {
 	
 	private static boolean mouseIsDragging = false;
+	private static ColorScheme currentScheme = ColorScheme.getNextScheme();
 
 	private static final long serialVersionUID = 1L;
 	private boolean isAlive;
     private boolean wasAlive;
-    private static ColorScheme currentScheme = ColorScheme.getNextScheme();
-    
-    private Color currentColor;
+    private Color currentColor;    
 
-    public CellPanel(){
+    /**
+     * Default constructor, begins turned off with a white background.
+     */
+    public CellPanel() {
         currentColor = Color.WHITE;
         setBackground(currentColor);
         isAlive = false;
@@ -78,6 +81,9 @@ public class CellPanel extends JPanel {
         updateColor();
     }
 
+    /**
+     * Updates color based on state the cell is in.
+     */
     public void updateColor(){
         if(isAlive){
             currentColor = currentScheme.getLiveColor();

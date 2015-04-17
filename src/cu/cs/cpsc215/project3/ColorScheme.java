@@ -1,5 +1,6 @@
 /**
- * Created by Grace on 4/15/15. Allows to switch between pre-designated color schemes.
+ * Created by Grace on 4/15/15. 
+ * Allows user to switch between pre-designated color schemes.
  * Implements FlyWeight pattern.
  */
 
