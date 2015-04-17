@@ -19,10 +19,13 @@ public class GridPanel extends JPanel implements Serializable {
 	private int width;
 	private int height;
 	private GameState gameState;
+	private int generation;
 
 	private GridBagConstraints gbConst;
     private CellPanel[][] cells;
 	private MatteBorder b;
+	JPanel bottomPanel;
+	JLabel genLabel;
 
     /**
      * Constructs a new gridPanel.
@@ -34,6 +37,7 @@ public class GridPanel extends JPanel implements Serializable {
     	
     	this.width = width;
     	this.height = height;
+		generation = 0;
     	gameState = new GameState(width, height);
     	
         this.setLayout(new GridBagLayout());
@@ -46,7 +50,7 @@ public class GridPanel extends JPanel implements Serializable {
         for(int r=0; r< height; r++) {
             for(int c=0; c<width; c++) {
                 gbConst.gridx = c;
-                gbConst.gridy = r;
+                gbConst.gridy = r+1;
 
                 cells[c][r] = new CellPanel();
 
@@ -59,6 +63,13 @@ public class GridPanel extends JPanel implements Serializable {
             }
         }
 		BorderScheme.stepBorder();
+
+		gbConst.gridx = width;
+		gbConst.gridy = 0;
+		bottomPanel = new JPanel();
+		this.add(bottomPanel, gbConst);
+		genLabel = new JLabel("Generation: " + 0, SwingConstants.RIGHT);
+		bottomPanel.add(genLabel);
     }
     
     /**
@@ -72,7 +83,9 @@ public class GridPanel extends JPanel implements Serializable {
     			cells[c][r].setState(gameState.getCellState(c, r));
     			} 
     		}
-       	updateColorChange();
+		generation = gameState.getGeneration();
+		genLabel.setText("Generation: " + generation);
+		updateColorChange();
     }
     
     /**
@@ -85,7 +98,9 @@ public class GridPanel extends JPanel implements Serializable {
     			cells[c][r].clear();
     			} 
     		}
-    }
+		generation = 0;
+		genLabel.setText("Generation: " + generation);
+	}
     
     /**
      * Calculates the number of live neighbors the cell at column c and
@@ -151,6 +166,9 @@ public class GridPanel extends JPanel implements Serializable {
     			if(toChange[c][r]) cells[c][r].updateState();
     		}
     	}
+
+		generation++;
+		genLabel.setText("Generation: " + generation);
     }
 
 	/**
@@ -217,6 +235,7 @@ public class GridPanel extends JPanel implements Serializable {
 				gameState.setCellState(c, r, cells[c][r].getState());
 			}
 		}
+		gameState.setGeneration(generation);
 	}
 	
 	/**

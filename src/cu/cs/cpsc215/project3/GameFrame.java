@@ -227,7 +227,6 @@ public class GameFrame extends JFrame {
         if(!new File(filePathway).exists())
             filePathway = System.getProperty("user.dir") + "/cu/cs/cpsc215/project3/savedGameStates/";
         filePathway += fileName + ".ser";
-    	System.out.println(filePathway);
     	
         try
         {
@@ -263,8 +262,10 @@ public class GameFrame extends JFrame {
            gridPanel.rebuildFromGameState();
            in.close();
            fileIn.close();
-        }
-    	catch(IOException i)
+        } catch(FileNotFoundException f){
+            System.out.println("User entered an invalid file name!");
+            return;
+        } catch(IOException i)
         {
            i.printStackTrace();
            return;

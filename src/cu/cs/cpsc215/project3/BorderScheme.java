@@ -5,6 +5,9 @@ import java.awt.*;
 
 /**
  * Created by Ryan on 4/16/2015.
+ * Designed to handle selecting the correct one out of
+ * the multiple different border states a user might choose for
+ * each cell
  */
 
 public class BorderScheme {

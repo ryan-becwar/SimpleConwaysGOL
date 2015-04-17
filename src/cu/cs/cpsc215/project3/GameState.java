@@ -4,17 +4,20 @@ import java.io.Serializable;
 
 /**
  * Created by Ryan on 4/8/2015.
+ * Minimal class to save the data to be serialized
  */
 public class GameState implements Serializable{
 
 	private static final long serialVersionUID = 2410146483192973766L;
 	private boolean[][] cells;
     private int width, height;
+	private int generation;
 
     public GameState(int width, int height) {
     	this.width = width;
     	this.height = height;
-    	
+		generation = 0;
+
     	cells = new boolean[width][height];
     }
     
@@ -30,4 +33,12 @@ public class GameState implements Serializable{
     		cells[c][r] = state;
     	}
     }
+
+	public int getGeneration(){
+		return generation;
+	}
+
+	public void setGeneration(int g){
+		generation = g;
+	}
 }
