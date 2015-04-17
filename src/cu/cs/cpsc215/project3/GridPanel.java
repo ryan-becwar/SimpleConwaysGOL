@@ -2,20 +2,19 @@ package cu.cs.cpsc215.project3;
 
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
 
 import java.awt.*;
 import java.io.Serializable;
 
 /**
- * Created by Ryan on 4/8/2015.
+ * Created by Ryan on 4/8/2015
+ * This class represents the grid that will graphically display all cell activity.
+ * The gameState which is a grid of booleans representing what cells are alive and dead
+ * will be serialized.
  */
 public class GridPanel extends JPanel implements Serializable {
 
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private int width;
 	private int height;
@@ -24,10 +23,6 @@ public class GridPanel extends JPanel implements Serializable {
 	private GridBagConstraints gbConst;
     private CellPanel[][] cells;
 	private MatteBorder b;
-    
-    //serializing the GridPanel object should be more effective and efficient than
-    //maintaining and serializing a gameState object
-    //private GameState gameState;
 
     /**
      * Constructs a new gridPanel.
@@ -179,6 +174,9 @@ public class GridPanel extends JPanel implements Serializable {
 			}
 	}
 
+	/*
+	 * Updates colors of all cells in the grid panel.
+	 */
 	public void updateColorChange() {
 		for(int r=0; r <height; r++){
 			for(int c=0; c<width; c++){
@@ -187,6 +185,9 @@ public class GridPanel extends JPanel implements Serializable {
 		}
 	}
 
+	/**
+	 * updates the border of the grid panel
+	 */
 	public void updateBorder() {
 		for(int r=0; r< height; r++){
 			for(int c=0; c<width; c++){

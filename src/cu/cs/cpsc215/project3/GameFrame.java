@@ -1,3 +1,11 @@
+/**
+ * Created by Ryan on 4/6/2015.
+ * GameFrame handles the entire graphical interface of the application.
+ * Implements Singleton so there is only one gameFrame at a time. It contains
+ * a GridPanel holding all cells and allows multiple GameState instances to be saved
+ * and loaded
+ */
+
 package cu.cs.cpsc215.project3;
 
 import javax.swing.*;
@@ -12,15 +20,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Timer;
 
-
-/**
- * Created by Ryan on 4/6/2015.
- */
 public class GameFrame extends JFrame {
     
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	private JMenuBar menuBar;
@@ -31,16 +32,16 @@ public class GameFrame extends JFrame {
     private JButton colorButton;
     private JButton borderButton;
     
-    private boolean isPlaying = false;
     private GridPanel gridPanel = null;
     private static GameFrame gameFrameInstance;
     
+    private boolean isPlaying = false;
     private Timer playTimer = new Timer( );
     private RunningGridPanel runningGP;
 
     /**
-     * 
-     * @param name
+     * Constructor that takes in a string as its name.
+     * @param name String of the game frame
      */
     private GameFrame(String name) {
         super(name);
@@ -58,7 +59,7 @@ public class GameFrame extends JFrame {
     
 
 	/**
-     * Implements and adds all buttons to button panel.
+     * Implements and adds all buttons to button panel with appropriate functionality.
      */
     public void buttonSetUp() {
     	
@@ -222,7 +223,7 @@ public class GameFrame extends JFrame {
         gridPanel.insertSubDesign(xCoord, yCoord, design.getWidth(), design.getHeight(), design.getDesign());
     }
     /**
-     * Saves grid panel
+     * Saves grid panel by serializing the gameState.
      */
     private void saveGridPanel() {
     	String fileName = (String)JOptionPane.showInputDialog("Enter name of file to save it.");
@@ -245,7 +246,7 @@ public class GameFrame extends JFrame {
     }
     
     /**
-     * Attempts to load gridPanel.
+     * Attempts to load gridPane by opening a serialized gameState.
      */
     private void loadGridPanel() {
     	String fileName = JOptionPane.showInputDialog("Enter name of file to upload it!");
@@ -274,7 +275,7 @@ public class GameFrame extends JFrame {
     
     
     /**
-     * made a singleton to ensure only one instance of the gameframe is running.
+     * Made a singleton to ensure only one instance of the gameframe is running.
      * 
      * @param name
      * @return
