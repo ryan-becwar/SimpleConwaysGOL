@@ -10,6 +10,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Timer;
+
 
 /**
  * Created by Ryan on 4/6/2015.
@@ -31,6 +33,9 @@ public class GameFrame extends JFrame {
     private boolean isPlaying = false;
     private GridPanel gridPanel = null;
     private static GameFrame gameFrameInstance;
+    
+    private Timer playTimer = new Timer( );
+    private RunningGridPanel runningGP;
 
     /**
      * 
@@ -76,10 +81,13 @@ public class GameFrame extends JFrame {
             	if(!isPlaying) {
             		isPlaying = true;
             		playButton.setText("Pause");
+            		runningGP = new RunningGridPanel(gridPanel);
+            		playTimer.schedule(runningGP, 0, 100);
             	}
             	else {
             		isPlaying = false;
             		playButton.setText("Play");
+            		runningGP.cancel();
             	}
             	buttonPanel.repaint();
             }
@@ -131,6 +139,7 @@ public class GameFrame extends JFrame {
         final SubDesign gliderGunItem = new GliderGunDesign("Glider Gun");
         final SubDesign fastSpaceshipItem = new FastSpaceshipDesign("Fast Spaceship");
         final SubDesign lwssItem = new LWSSDesign("LWSS");
+        
         subDesignMenu.add(gliderItem);
         subDesignMenu.add(gliderGunItem);
         subDesignMenu.add(fastSpaceshipItem);
@@ -210,7 +219,6 @@ public class GameFrame extends JFrame {
            out.writeObject(gridPanel.getGameState());
            out.close();
            fileOut.close();
-           System.out.printf("Serialized data is saved in " + filePathway);
            
         }catch(IOException i)
         {

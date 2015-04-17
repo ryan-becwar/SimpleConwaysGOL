@@ -68,6 +68,8 @@ public class GridPanel extends JPanel implements Serializable {
      * Sets cell state based off of game state.
      */
     public void rebuildFromGameState(){
+    	reset();
+    	
        	for(int r =0; r <  height; r++) {
     		for(int c = 0; c < width; c++) {
     			cells[c][r].setState(gameState.getCellState(c, r));
