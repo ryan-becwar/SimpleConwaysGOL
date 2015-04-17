@@ -23,6 +23,7 @@ public class GridPanel extends JPanel implements Serializable {
 
 	private GridBagConstraints gbConst;
     private CellPanel[][] cells;
+	private MatteBorder b;
     
     //serializing the GridPanel object should be more effective and efficient than
     //maintaining and serializing a gameState object
@@ -56,13 +57,13 @@ public class GridPanel extends JPanel implements Serializable {
 
 
                 //Logic to handle cell border thickness
-                Border b = null;
-                b = new MatteBorder(1, 1, 1, 1, new Color(200,200,200));
+				b = BorderScheme.getCorrectBorder(c, r, width, height);
                 cells[c][r].setBorder(b);
 
                 add(cells[c][r], gbConst);
             }
         }
+		BorderScheme.stepBorder();
     }
     
     /**
@@ -187,7 +188,13 @@ public class GridPanel extends JPanel implements Serializable {
 	}
 
 	public void updateBorder() {
-		for(int r=0; r< height; r++);
+		for(int r=0; r< height; r++){
+			for(int c=0; c<width; c++){
+				b = BorderScheme.getCorrectBorder(c, r, width, height);
+				cells[c][r].setBorder(b);
+			}
+		}
+		BorderScheme.stepBorder();
 	}
 
 	/**
