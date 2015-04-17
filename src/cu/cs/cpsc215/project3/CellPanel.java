@@ -9,6 +9,8 @@ import java.awt.event.MouseEvent;
  * Created by Ryan on 4/8/2015.
  */
 public class CellPanel extends JPanel {
+	
+	private static boolean mouseIsDragging = false;
 
 	private static final long serialVersionUID = 1L;
 	private boolean isAlive;
@@ -24,14 +26,11 @@ public class CellPanel extends JPanel {
         wasAlive = false;
 
         addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                updateState();
-            }
 
             @Override
             public void mouseEntered(MouseEvent e) {
                 setBackground(currentScheme.getLiveColor());
+                if(mouseIsDragging) updateState();
                 repaint();
             }
 
@@ -39,6 +38,16 @@ public class CellPanel extends JPanel {
             public void mouseExited(MouseEvent e) {
                 setBackground(currentColor);
                 repaint();
+            }
+            
+            public void mousePressed(MouseEvent e) {
+            	updateState();
+            	mouseIsDragging = true;
+            }
+            
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            	mouseIsDragging = false;
             }
         });
     }
