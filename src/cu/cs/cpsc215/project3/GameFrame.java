@@ -81,10 +81,13 @@ public class GameFrame extends JFrame {
             	if(!isPlaying) {
             		isPlaying = true;
             		playButton.setText("Pause");
+            		runningGP = new RunningGridPanel(gridPanel);
+            		playTimer.schedule(runningGP, 0, 100);
             	}
             	else {
             		isPlaying = false;
             		playButton.setText("Play");
+            		runningGP.cancel();
             	}
             	buttonPanel.repaint();
             }
