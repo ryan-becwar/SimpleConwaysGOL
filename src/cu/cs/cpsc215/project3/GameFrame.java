@@ -1,11 +1,3 @@
-/**
- * Created by Ryan on 4/6/2015.
- * GameFrame handles the entire graphical interface of the application.
- * Implements Singleton so there is only one gameFrame at a time. It contains
- * a GridPanel holding all cells and allows multiple GameState instances to be saved
- * and loaded
- */
-
 package cu.cs.cpsc215.project3;
 
 import javax.swing.*;
@@ -16,6 +8,13 @@ import java.awt.event.ActionEvent;
 import java.io.*;
 import java.util.Timer;
 
+/**
+ * Created by Ryan on 4/6/2015.
+ * GameFrame handles the entire graphical interface of the application.
+ * Implements Singleton so there is only one gameFrame at a time. It contains
+ * a GridPanel holding all cells and allows multiple GameState instances to be saved
+ * and loaded
+ */
 public class GameFrame extends JFrame {
     
 	private static final long serialVersionUID = 1L;

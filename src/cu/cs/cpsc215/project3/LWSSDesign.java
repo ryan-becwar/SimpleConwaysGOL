@@ -2,6 +2,7 @@ package cu.cs.cpsc215.project3;
 
 /**
  * Created by Ryan on 4/16/2015.
+ * LWSS Design that is insert-able into a given grid panel. (explodes)
  * Expands rapidly into an interesting pattern
  */
 public class LWSSDesign extends SubDesign {
