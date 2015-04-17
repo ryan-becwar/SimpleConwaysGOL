@@ -16,15 +16,50 @@ import java.io.Serializable;
 public class GridPanel extends JPanel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * width of the grid
+	 */
 	private int width;
+	
+	/**
+	 * height of the grid
+	 */
 	private int height;
+	
+	/**
+	 * Game state that keeps track of states of all cells for longevity
+	 */
 	private GameState gameState;
+	
+	/**
+	 * generations created
+	 */
 	private int generation;
 
+	/**
+	 * GridBagConstraints to set up grid layout of cells
+	 */
 	private GridBagConstraints gbConst;
+	
+	/**
+	 * grid of cell panels.
+	 */
     private CellPanel[][] cells;
+    
+    /**
+     * MatteBorder of entire panel.
+     */
 	private MatteBorder b;
+	
+	/**
+	 * Bottom informational panel
+	 */
 	JPanel bottomPanel;
+	
+	/**
+	 * contains all buttons
+	 */
 	JLabel genLabel;
 
     /**
@@ -62,6 +97,7 @@ public class GridPanel extends JPanel implements Serializable {
                 add(cells[c][r], gbConst);
             }
         }
+        
 		BorderScheme.stepBorder();
 
 		gbConst.gridx = width;
@@ -192,7 +228,7 @@ public class GridPanel extends JPanel implements Serializable {
 			}
 	}
 
-	/*
+	/**
 	 * Updates colors of all cells in the grid panel.
 	 */
 	public void updateColorChange() {

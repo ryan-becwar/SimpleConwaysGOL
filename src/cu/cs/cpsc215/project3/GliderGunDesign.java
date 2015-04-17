@@ -2,6 +2,7 @@ package cu.cs.cpsc215.project3;
 
 /**
  * Created by Ryan on 4/15/2015.
+ * GliderGunDesign that is insert-able into a given grid panel.
  */
 public class GliderGunDesign extends SubDesign {
     public GliderGunDesign() {

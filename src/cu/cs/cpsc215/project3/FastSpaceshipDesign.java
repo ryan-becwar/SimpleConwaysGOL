@@ -2,6 +2,7 @@ package cu.cs.cpsc215.project3;
 
 /**
  * Created by Ryan on 4/16/2015.
+ * This is an insert-able design into a grid panel that creates a Fast Spaceship.
  */
 public class FastSpaceshipDesign extends SubDesign {
     public FastSpaceshipDesign() {
