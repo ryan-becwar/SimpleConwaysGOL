@@ -13,11 +13,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.Timer;
 
 public class GameFrame extends JFrame {
@@ -227,7 +223,10 @@ public class GameFrame extends JFrame {
      */
     private void saveGridPanel() {
     	String fileName = (String)JOptionPane.showInputDialog("Enter name of file to save it.");
-    	String filePathway = System.getProperty("user.dir") + "/src/cu/cs/cpsc215/project3/savedGameStates/" + fileName + ".ser";
+        String filePathway = System.getProperty("user.dir") + "/src/cu/cs/cpsc215/project3/savedGameStates/";
+        if(!new File(filePathway).exists())
+            filePathway = System.getProperty("user.dir") + "/cu/cs/cpsc215/project3/savedGameStates/";
+        filePathway += fileName + ".ser";
     	System.out.println(filePathway);
     	
         try
@@ -250,7 +249,11 @@ public class GameFrame extends JFrame {
      */
     private void loadGridPanel() {
     	String fileName = JOptionPane.showInputDialog("Enter name of file to upload it!");
-    	String filePathway = System.getProperty("user.dir") + "/src/cu/cs/cpsc215/project3/savedGameStates/" + fileName + ".ser";
+        String filePathway = System.getProperty("user.dir") + "/src/cu/cs/cpsc215/project3/savedGameStates/";
+        if(!new File(filePathway).exists())
+            filePathway = System.getProperty("user.dir") + "/cu/cs/cpsc215/project3/savedGameStates/";
+        filePathway += fileName + ".ser";
+        System.out.println(filePathway);
     	try
         {
            FileInputStream fileIn = new FileInputStream(filePathway);
