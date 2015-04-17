@@ -4,8 +4,7 @@ package cu.cs.cpsc215.project3;
  * Created by Ryan on 4/15/2015.
  */
 public class GliderGunDesign extends SubDesign {
-    public GliderGunDesign(String name) {
-        super(name);
+    public GliderGunDesign() {
         height = 9;
         width = 36;
         design = new boolean[][] {

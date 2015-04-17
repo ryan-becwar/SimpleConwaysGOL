@@ -54,6 +54,7 @@ public class GridPanel extends JPanel implements Serializable {
 
                 cells[c][r] = new CellPanel();
 
+
                 //Logic to handle cell border thickness
                 Border b = null;
                 b = new MatteBorder(1, 1, 1, 1, new Color(200,200,200));
@@ -183,6 +184,10 @@ public class GridPanel extends JPanel implements Serializable {
 				cells[c][r].updateColor();
 			}
 		}
+	}
+
+	public void updateBorder() {
+		for(int r=0; r< height; r++);
 	}
 
 	/**

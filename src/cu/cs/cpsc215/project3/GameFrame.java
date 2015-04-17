@@ -81,13 +81,10 @@ public class GameFrame extends JFrame {
             	if(!isPlaying) {
             		isPlaying = true;
             		playButton.setText("Pause");
-            		runningGP = new RunningGridPanel(gridPanel);
-            		playTimer.schedule(runningGP, 0, 100);
             	}
             	else {
             		isPlaying = false;
             		playButton.setText("Play");
-            		runningGP.cancel();
             	}
             	buttonPanel.repaint();
             }
@@ -135,11 +132,10 @@ public class GameFrame extends JFrame {
     	fileMenu.add(open);
     	fileMenu.add(saveAs);
 
-        final SubDesign gliderItem = new GliderDesign("Glider");
-        final SubDesign gliderGunItem = new GliderGunDesign("Glider Gun");
-        final SubDesign fastSpaceshipItem = new FastSpaceshipDesign("Fast Spaceship");
-        final SubDesign lwssItem = new LWSSDesign("LWSS");
-        
+        final JMenuItem gliderItem = new JMenuItem("Glider");
+        final JMenuItem gliderGunItem = new JMenuItem("Glider Gun");
+        final JMenuItem fastSpaceshipItem = new JMenuItem("Fast Spaceship");
+        final JMenuItem lwssItem = new JMenuItem("LWSS");
         subDesignMenu.add(gliderItem);
         subDesignMenu.add(gliderGunItem);
         subDesignMenu.add(fastSpaceshipItem);
@@ -147,27 +143,27 @@ public class GameFrame extends JFrame {
 
         gliderItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                insertSubDesign(gliderItem);
+                insertSubDesign(new GliderDesign());
             }
         });
 
         gliderGunItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                insertSubDesign(gliderGunItem);
+                insertSubDesign(new GliderGunDesign());
             }
         });
 
         fastSpaceshipItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                insertSubDesign(fastSpaceshipItem);
+                insertSubDesign(new FastSpaceshipDesign());
             }
         });
 
         lwssItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                insertSubDesign(lwssItem);
+                insertSubDesign(new LWSSDesign());
             }
         });
 
@@ -219,6 +215,7 @@ public class GameFrame extends JFrame {
            out.writeObject(gridPanel.getGameState());
            out.close();
            fileOut.close();
+           System.out.printf("Serialized data is saved in " + filePathway);
            
         }catch(IOException i)
         {

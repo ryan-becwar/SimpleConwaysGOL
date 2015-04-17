@@ -4,8 +4,7 @@ package cu.cs.cpsc215.project3;
  * Created by Ryan on 4/16/2015.
  */
 public class FastSpaceshipDesign extends SubDesign {
-    public FastSpaceshipDesign(String name) {
-        super(name);
+    public FastSpaceshipDesign() {
         height = 4;
         width = 5;
         design = new boolean[][] {

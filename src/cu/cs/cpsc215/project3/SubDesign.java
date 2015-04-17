@@ -5,15 +5,11 @@ import javax.swing.*;
 /**
  * Created by Ryan on 4/15/2015.
  */
-public abstract class SubDesign extends JMenuItem{
+public abstract class SubDesign{
 
     int height;
     int width;
     boolean[][] design;
-
-    public SubDesign(String name){
-        super(name);
-    }
 
     public int getHeight() {
         return height;

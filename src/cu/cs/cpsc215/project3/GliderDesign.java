@@ -6,12 +6,11 @@ package cu.cs.cpsc215.project3;
 public class GliderDesign extends SubDesign {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	public GliderDesign(String name){
-        super(name);
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    
+    public GliderDesign(){
         height = 3;
         width = 3;
         design = new boolean[][]{{false, true, false},
