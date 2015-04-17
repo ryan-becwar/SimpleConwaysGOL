@@ -205,6 +205,19 @@ public class GridPanel extends JPanel implements Serializable {
 	public void setGameState(GameState readObject) {
 		gameState = readObject;
 	}
+
+	/**
+	 * Ensures that the gamestate is equivalent to the current grid
+	 *
+	 * To be called immediately before saving the game
+	 */
+	public void preserveGameState(){
+		for(int r=0; r< height; r++){
+			for(int c=0; c<width; c++){
+				gameState.setCellState(c, r, cells[c][r].getState());
+			}
+		}
+	}
 	
 	/**
 	 * Returns game state

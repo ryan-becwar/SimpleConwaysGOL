@@ -233,6 +233,7 @@ public class GameFrame extends JFrame {
         {
            FileOutputStream fileOut = new FileOutputStream(filePathway);
            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            gridPanel.preserveGameState();
            out.writeObject(gridPanel.getGameState());
            out.close();
            fileOut.close();
