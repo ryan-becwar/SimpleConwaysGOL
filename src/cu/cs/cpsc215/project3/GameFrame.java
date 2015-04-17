@@ -50,6 +50,7 @@ public class GameFrame extends JFrame {
         buttonPanel = new JPanel();
         add(buttonPanel);
         getContentPane().add(buttonPanel, BorderLayout.SOUTH);
+        
 
         buttonSetUp();
         menuSetUp();
@@ -209,7 +210,7 @@ public class GameFrame extends JFrame {
      */
     private void saveGridPanel() {
     	String fileName = (String)JOptionPane.showInputDialog("Enter name of file to save it.");
-    	String filePathway = System.getProperty("user.dir") + "/savedGameStates/" + fileName + ".ser";
+    	String filePathway = System.getProperty("user.dir") + "cu/cs/cpsc215/project3/savedGameStates/" + fileName + ".ser";
     	System.out.println(filePathway);
     	
         try
@@ -232,7 +233,7 @@ public class GameFrame extends JFrame {
      */
     private void loadGridPanel() {
     	String fileName = JOptionPane.showInputDialog("Enter name of file to upload it!");
-    	String filePathway = System.getProperty("user.dir") + "/savedGameStates/" + fileName + ".ser";
+    	String filePathway = System.getProperty("user.dir") + "cu/cs/cpsc215/project3/savedGameStates/" + fileName + ".ser";
     	try
         {
            FileInputStream fileIn = new FileInputStream(filePathway);
